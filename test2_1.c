@@ -33,7 +33,7 @@ void Output_Grade(int *p,student *stu){//输出已存入的学生信息
     }
 }
 
-student* Add_score(int *p,student *stu){//添加学生信息
+void Add_score(int *p,student *stu){//添加学生信息
     // student *p;
     stu=(student*)realloc(stu,(*p+1)*sizeof(student));
     if(!stu) exit(0);
@@ -42,11 +42,11 @@ student* Add_score(int *p,student *stu){//添加学生信息
     while (stu[*p].score[0]<0||stu[*p].score[0]>100||stu[*p].score[1]<0||stu[*p].score[1]>100||stu[*p].score[2]<0||stu[*p].score[2]>100)
     {
         printf("请重新依次输入新加入学生成绩：\n");
-        scanf("%d %d %d %d",&stu[*p].score[0],&stu[*p].score[1],&stu[*p].score[2]);
+        scanf("%d %d %d %d",&stu[*p].Num,&stu[*p].score[0],&stu[*p].score[1],&stu[*p].score[2]);
     }
     stu[*p].sum=stu[*p].score[0]+stu[*p].score[1]+stu[*p].score[2];
     stu[*p].aver=stu[*p].score[0]*0.3+stu[*p].score[1]*0.5+stu[*p].score[2]*0.2;
-    *p++;
+    *p=*p+1;
     Output_Grade(p,stu);
     // return stu;
 }
